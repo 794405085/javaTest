@@ -17,7 +17,7 @@ public class NioClient {
     @Test
     public void nioClientTest() throws Exception{
 
-        //1.得到一个网络通道
+        //1.得到一个网络通道1
         SocketChannel socketChannel = SocketChannel.open();
         //2.设置非阻塞方式
         socketChannel.configureBlocking(false);
