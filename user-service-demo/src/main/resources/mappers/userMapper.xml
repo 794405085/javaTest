@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leyou.demo.userservice.Mapper.UserMapper">
+    <resultMap id="userMapper" type="com.leyou.demo.userservice.instance.User">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="userName" column="username" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="name" column="realname" jdbcType="VARCHAR"/>
+        <result property="age" column="age" jdbcType="VARCHAR"/>
+        <result property="birthday" column="birthday" jdbcType="DATE"/>
+        <result property="note" column="note" jdbcType="VARCHAR"/>
+        <result property="createDate" column="createdate" jdbcType="DATE"/>
+        <result property="upDate" column="updatedate" jdbcType="DATE"/>
+        <result property="createBy" column="createby" jdbcType="VARCHAR"/>
+        <result property="updateBy" column="updateby" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectById" parameterType="Integer" resultMap="userMapper">
+        SELECT
+        id id,
+        createdate,
+        updatedate,
+        createby,
+        updateby,
+        username,
+        password,
+        realname,
+        age,
+        birthday,
+        note
+        FROM
+        tb_user
+        WHERE 1=1
+        <if test="id!=null">
+            AND id=#{id,jdbcType=INTEGER}
+        </if>
+    </select>
+</mapper>
